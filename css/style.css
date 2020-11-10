@@ -29,6 +29,7 @@ body {
     -webkit-border-radius: 45px 133px 111px 200px;
     border: 0px dotted #000000;
     overflow: hidden;
+    transition: all 0.1s ease-in-out;
 }
 
 .texto {
@@ -55,8 +56,17 @@ img.icons {
 .otros-premio,
 .premio-final,
 .repetir,
-.despedida {
+.despedida, #menu {
     display: none;
+}
+
+div#menu {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  font-size: 12px;
 }
 
 

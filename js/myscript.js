@@ -1,7 +1,8 @@
 /*
 
 Aplicación desarrollada puramente con JS
-para las clases de DWEC de Nuevas Profesiones (Curso 2019/20)
+para las clases de Desarrollo de Aplicaciones Web y Multiplataforma
+de Nuevas Profesiones (Sevilla)
 
 Web: https://fpnuevasprofesiones.es/
 
@@ -11,25 +12,53 @@ Web: https://fpnuevasprofesiones.es/
 
 
 /**
- *  Definición de Clases
+ *  Definición de Clase Jugador
+ *  Mediante esta clase voy a controlar lo que sucede con el visitante
+ *  además de gamificar 
  */
 
 class Jugador {
-    constructor() {}
-        // constructor(apodo, rol) {
-        //     this.apodo = apodo;
-        //     this.rol = rol;
-        //     this.puntos = 0;
-        // }
-    setDatos(apodo, rol) {
+    /*
+    *Inicializamos jugador con 0 puntos
+    */
+    constructor() {
+        this.puntos = 0;
+    }
+
+    /*
+    * Métodos Getters y Setters Básicos
+    */
+    getApodo(){
+        return this.apodo;
+    }
+    getRol(){
+        return this.apodo;
+    }
+    getPuntos(){
+        return this.apodo;
+    }
+    setApodo(apodo) {
         this.apodo = apodo;
+    }    
+    setRol(rol) {
         this.rol = rol;
     }
     setPuntos(puntos) {
         this.puntos = puntos;
     }
+    setDatos(apodo, rol) {
+        this.apodo = apodo;
+        this.rol = rol;
+    }
+
+    /**
+     * Métodos adicionales de Jugador
+     */
     saludo() {
-        return "Hola " + this.apodo + " tu rol es " + this.rol + " tus puntos son: " + this.puntos;
+        let saludo = "Hola <b>" + this.getApodo() + "</b>, ahora tienes <b>" + this.puntos + " Puntos</b>. <span>¿Quieres más puntos?</span>.";
+        let menu = $("#menu");
+        menu.innerHTML=saludo;
+        menu.style.display = "block";
     }
 }
 
@@ -38,7 +67,7 @@ class Jugador {
  * Variables globales
  */
 
-var jugador = new Jugador();
+let jugador = new Jugador();
 
 
 
@@ -48,33 +77,48 @@ var jugador = new Jugador();
 
 
 function start() {
-    console.log("hola");
-    var bienvenida = $("#bienvenida");
-    var datos = $("#datos");
-    console.log(bienvenida[0]);
-    bienvenida[0].style.display = "none";
-    datos[0].style.display = "block";
-
-
+    let bienvenida = $("#bienvenida");
+    let datos = $("#datos");
+    
+    bienvenida.style.display = "none";
+    datos.style.display = "block";
 }
 
 function cargardatos() {
-
-    var apodo = $("#apodo");
-    var rol = $("#rol");
-    console.log(apodo[0].value);
-    console.log(rol[0].value);
-
-    //jugador.setDatos(apodo, rol);
-
-    // console.log(jugador.saludo);
+    let apodo = $("#apodo");
+    let rol = $("#rol");
+    console.log(rol.value);
+    jugador.setDatos(apodo.value, rol.value);
+    jugador.setPuntos(1);
+    jugador.saludo();
+        if(rol.value=="web"){
+            dev();
+        } else if(rol.value=="teacher"){
+            teacher();
+        }else{
+            other();
+        }
 }
 
+function dev(){
+    let datos = $("#datos");
+    let web = $("#web-bienvenida");
+    let container = $(".container");
 
+    container.style.width ="75%";
+    container.style.height ="75%";
 
+    datos.style.display = "none";
+    web.style.display = "block";
+}
 
+function teacher(){
 
+}
 
+function other(){
+
+}
 
 
 /**
@@ -82,5 +126,5 @@ function cargardatos() {
  */
 
 function $(selector) {
-    return document.querySelectorAll(selector);
+    return document.querySelector(selector);
 }
