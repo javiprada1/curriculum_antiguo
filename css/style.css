@@ -69,6 +69,13 @@ div#menu {
   font-size: 12px;
 }
 
+img#image-web {
+  width: 100%;
+}
+div#contenido-web P {
+  font-size: 10px;
+  text-align: justify;
+}
 
 /* 
     ##Device = Laptops, Desktops

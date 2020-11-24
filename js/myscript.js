@@ -54,12 +54,25 @@ class Jugador {
     /**
      * Métodos adicionales de Jugador
      */
-    saludo() {
+    saludoweb() {
+        let saludo = "Hola <b>" + this.getApodo() + "</b>, ahora tienes <b>" + this.puntos + " Puntos</b>. <span>¿Quieres más puntos? Investiga un poco más sobre mi perfil como <a href='#'>Docente</a> o como <a href='#'>Otros</a>.</span>.";
+        let menu = $("#menu");
+        menu.innerHTML=saludo;
+        menu.style.display = "block";
+    }
+    saludoteacher() {
         let saludo = "Hola <b>" + this.getApodo() + "</b>, ahora tienes <b>" + this.puntos + " Puntos</b>. <span>¿Quieres más puntos?</span>.";
         let menu = $("#menu");
         menu.innerHTML=saludo;
         menu.style.display = "block";
     }
+    saludoother() {
+        let saludo = "Hola <b>" + this.getApodo() + "</b>, ahora tienes <b>" + this.puntos + " Puntos</b>. <span>¿Quieres más puntos?</span>.";
+        let menu = $("#menu");
+        menu.innerHTML=saludo;
+        menu.style.display = "block";
+    }
+
 }
 
 
@@ -89,8 +102,8 @@ function cargardatos() {
     let rol = $("#rol");
     console.log(rol.value);
     jugador.setDatos(apodo.value, rol.value);
-    jugador.setPuntos(1);
-    jugador.saludo();
+    jugador.setPuntos(3);
+    jugador.saludoweb();
         if(rol.value=="web"){
             dev();
         } else if(rol.value=="teacher"){
@@ -111,6 +124,8 @@ function dev(){
     datos.style.display = "none";
     web.style.display = "block";
 }
+
+
 
 function teacher(){
 
